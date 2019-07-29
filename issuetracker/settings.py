@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django_comments',
     'accounts',
     'posts',
-    'cart'
+    'cart',
+    'checkout'
 ]
 
 MIDDLEWARE = [
