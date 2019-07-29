@@ -88,3 +88,31 @@ def delete_post(request, pk):
     post.delete()
 
     return redirect(reverse('get_all'))
+    
+#More Info on Project 
+def about(request):
+    """
+    Create a view that renders about page.
+    """
+    return render(request, "about.html")
+    
+#Voting  
+@login_required()
+def upvote(request, post_id):
+    """
+    Create a view that will enable users to upload each bug once. If bug was
+    already upvoted by user, user is returned to all posts view and gets
+    visual feedback about inability to upvote twice
+    """
+    if Voter.objects.filter(post_id=post_id, user_id=request.user.id).exists():
+
+        messages.info(request, 'You already upvoted this!')
+        return redirect(reverse('get_all'))
+
+    else:
+        post = get_object_or_404(Post, pk=post_id)
+        post.upvotes += 1
+        post.save()
+        Voter.objects.create(post_id=post_id, user_id=request.user.id)
+        
+    return redirect(reverse('get_all'))
