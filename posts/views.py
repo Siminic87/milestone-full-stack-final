@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect, reverse
 from django.utils import timezone
-from .models import Post
+from .models import Post, Voter
 from django.contrib.auth.models import User
 from .forms import BlogPostForm
 from django.contrib.auth.decorators import login_required
@@ -62,7 +62,7 @@ def post_detail(request, pk):
     post.views += 1
     post.save()
     return render(request, "postdetail.html", {'post': post})
-    
+
 def create_or_edit_post(request, pk=None):
     """
     Create a view that allows users to create or edit posts depending on if the 
@@ -88,7 +88,7 @@ def delete_post(request, pk):
     post.delete()
 
     return redirect(reverse('get_all'))
-    
+
 #More Info on Project 
 def about(request):
     """
