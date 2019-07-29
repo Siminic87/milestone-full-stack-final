@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'django_forms_bootstrap',
     'django_comments',
+    'accounts',
     'posts',
     'cart'
 ]
