@@ -1,0 +1,78 @@
+{% extends 'base.html' %} 
+{% load comments %} 
+{% block content %}
+
+<!-- Messages -->
+{% if messages %}
+<ul>
+    {% for message in messages %}
+    <li>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+<!-- /.Messages -->
+
+<!-- Filtering Buttons -->
+<p>
+    <a href="{% url 'get_all' %}" class="btn btn-secondary active">All</a>
+    <a href="{% url 'get_features' %}" class="btn btn-secondary">Feature Requests</a>
+    <a href="{% url 'get_bugs' %}" class="btn btn-secondary">Bugs</a>
+</p>
+<!-- /.Filtering Buttons -->
+
+<hr> 
+
+<!-- Bugs & Feature Requests -->
+{% for post in posts %}
+<div class="card border-primary mb-3" style="max-width: 33rem;">
+    <div class="card-header">{{ post.type }} ({{ post.status }})</div>
+    <div class="card-body">
+        <h4 class="card-title">{{ post.title }}</h4>
+        <p class="card-text">{{ post.content|truncatewords:30 }}</p>
+        {% if post.type == "Bug" %}
+        <p>
+            <a href="{% url 'post_detail' post.id %}" class="btn btn-secondary">Read more</a>
+            {% if user.is_authenticated %}
+            <a href="upvote/{{ post.id }}/" class="btn btn-secondary">+</a> Up: {{ post.upvotes }}
+            {% endif %}
+        </p>
+        {% else %}
+        <p>
+            <a href="{% url 'post_detail' post.id %}" class="btn btn-secondary">Read more</a>
+        </p>
+        {% if user.is_authenticated %}
+        <form method="post" action={% url 'add_to_cart' post.id %}>
+            {% csrf_token %}
+            <div class="input-group">
+                <input name="quantity" type="number" min="1" max="10" class="form-control" placeholder="Quantity">
+                <span class="input-group-btn">
+                    <button class="btn btn-secondary" type="submit">+</button> Up: {{ post.upvotes }}
+                </span>
+            </div>
+        </form>
+        {% endif %} {% endif %}
+    </div>
+</div>
+{% endfor %}
+<!-- /.Bugs & Feature Requests -->
+
+<hr>
+
+<!-- Pagination -->
+<div class="pagination">
+    <span class="step-links">
+        {% if contacts.has_previous %}
+            <a href="?page=1">&laquo; first</a>
+            <a href="?page={{ contacts.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ posts.number }} of {{ posts.paginator.num_pages }}.
+        </span> {% if contacts.has_next %}
+    <a href="?page={{ contacts.next_page_number }}">next</a>
+    <a href="?page={{ contacts.paginator.num_pages }}">last &raquo;</a> {% endif %}
+    </span>
+</div>
+<!-- /.Pagination -->
+
+{% endblock %}
