@@ -1,0 +1,40 @@
+/*Navbar*/
+.navbar-brand
+{
+  font-size: 38px;
+  padding: 10px 10px;
+}
+
+#navbar > ul {
+  margin-top: 5px;
+}
+
+/*-----Navbar-----*/
+
+/*HTML*/
+body {
+    font-family: Arial;
+}
+
+.container {
+    margin-top: 20px;
+}
+
+footer {
+    margin-top: 40px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    background-color: #ededed;
+}
+
+a, a:hover {
+    color: #223344;
+    text-decoration: none;
+}
+/*-----HTML-----*/
+
+/*Comments*/
+.comment {
+    margin: 20px 0px 20px 20px;
+}
+/*-----Comments-----*/
