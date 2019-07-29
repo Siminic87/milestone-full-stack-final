@@ -51,3 +51,10 @@ class Post(models.Model):
     
     def __unicode__(self):
         return self.title
+        
+class Voter(models.Model):
+    """
+    Records voter per post
+    """
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    post = models.ForeignKey(Post, null=True, on_delete=models.CASCADE)
