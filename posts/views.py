@@ -62,3 +62,29 @@ def post_detail(request, pk):
     post.views += 1
     post.save()
     return render(request, "postdetail.html", {'post': post})
+    
+def create_or_edit_post(request, pk=None):
+    """
+    Create a view that allows users to create or edit posts depending on if the 
+    Post ID is null or not
+    """
+    post = get_object_or_404(Post, pk=pk) if pk else None
+    if request.method == "POST":
+        form = BlogPostForm(request.POST, request.FILES, instance=post)
+        if form.is_valid():
+            instance = form.save(commit=False)
+            instance.author = request.user
+            instance.save()
+            return redirect(post_detail, instance.pk)
+    else:
+        form = BlogPostForm(instance=post)
+    return render(request, 'postform.html', {'form': form})
+    
+def delete_post(request, pk):
+    """
+    Create a view that allows users to delete posts.
+    """
+    post = get_object_or_404(Post, pk=pk)
+    post.delete()
+
+    return redirect(reverse('get_all'))
