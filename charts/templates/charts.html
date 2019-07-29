@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% block content %}
+
+{% block head_js %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
+{% endblock head_js %}
+
+<!--Charts-->
+<div class="row">
+    <div class="col s12 l6">
+        <canvas id="myChart" width="100" height="100"></canvas>
+    </div>
+
+    <div class="col s12 l6">
+        <canvas id="myChart2" width="100" height="100"></canvas>
+    </div>
+</div>
+<!-- /.Charts -->
+
+<!-- Chart Logic -->
+<script>
+var endpoint = "/charts/api/data"
+$.ajax({
+    method: "GET",
+    url: endpoint,
+    success: function(data){
+        labels = data.labels
+        defaultData = data.default
+        defaultData2 = data.default2
+        var ctx = document.getElementById('myChart');
+        var myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: '# Feature Requests - marked "Done"',
+                    backgroundColor: 'rgb(102, 153, 0)',
+                    borderColor: 'rgb(102, 153, 0)',
+                    data: defaultData,
+                }]
+            
+            }
+        })
+        var ctx = document.getElementById('myChart2');
+        var myChart2 = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: '# Bugs - marked "Done"',
+                    backgroundColor: 'rgb(255, 99, 132)',
+                    borderColor: 'rgb(255, 99, 132)',
+                    data: defaultData2,
+                }]
+            }
+        }) 
+    },
+    error: function(error_data){
+        console.log("error")
+        console.log(error_data)
+    },
+})
+</script>
+<!-- /.Chart Logic -->
+
+{% endblock %}
