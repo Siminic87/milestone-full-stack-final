@@ -20,5 +20,6 @@ from .settings import MEDIA_ROOT
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$', RedirectView.as_view(url='posts/'))
+    url(r'^$', RedirectView.as_view(url='posts/')),
+    url(r'^posts/', include('posts.urls')),
 ]
