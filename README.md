@@ -80,33 +80,37 @@ Manual testing revealed that the “overview” and “summary" were integrated 
 2.	Assessing and voting on urgency of bugs and feature requests
     1. Go to Online Marketing - Issue Tracker homepage
     2. Try scrolling down results and verify that individual bug and feature request cards show number of received upvotes (See “Up:”).
-    3. OR try to click on “Login” in main navigation and verify that individual bug and feature request cards now have an upvote button.
+    3. OR try to “Login” in via main navigation and verify that individual bug and feature request cards now have an upvote button.
     4. Try to click on upvote button of BUG and verify that total number of upvotes of the chosen bug goes up by 1. Verify that when same bug gets upvoted a second time by same user, message "you already upvoted this!" appears above results.
     5. OR try to click on upvote button of FEATURE REQUEST and verify that chosen number of upvotes in form of the chosen feature gets transferred to cart as indicated by badge icon on top navigation and actual cart page that user is now redirected to. Verify that subtotals and total Euro amount for chosen number of upvotes is correct.
     6. Try to click on "checkout" and verify that purchase can succesfully be made with 4242 4242 4242 4242 stripe test credit card when purchase information is entered in form fields. Verify that sub-totals and total are still correct on checkout page.
-    7. 
-    5. OR try to click on “login” in main navigation, click on the “Read More” button on an individual tip card (either on filtered or non-filtered results page) and verify that the individual tip card now has an up- and downvote button.
-    6. Try to click on either the up- or downvote button and verify that total number of upvotes of the chosen tip goes up or down accordingly.
+    7. OR try to click on “login” in main navigation, click on the “Read More” button on an individual tip card (either on filtered or non-filtered results page) and verify that the individual feature request or bug card now has an upvote button.
+    8. Try to click on  the upvote button and verify that total number of upvotes of the chosen BUG goes up or down accordingly.
+    9. OR try to click on upvote button of FEATURE REQUEST detail apge and verify that chosen number of upvotes in form of the chosen feature gets transferred to cart as indicated by badge icon on top navigation and actual cart page that user is now redirected to. Verify that subtotals and total Euro amount for chosen number of upvotes is correct.
+    10. Try to click on "checkout" and verify that purchase can succesfully be made with 4242 4242 4242 4242 stripe test credit card when purchase information is entered in form fields. Verify that sub-totals and total are still correct on checkout page. 
 
 Manual testing revealed that assessing and voting on tips was integrated and visualised seamlessly. The functionality is accessible on all devices and all major browsers and looks virtually the same on different browsers. 
 
-3.	Posting, editing and deleting tips (incl. tip categories)
-    1. Go to SEO User Exchange homepage
-    2. Try to click on “login” in top navigation, click “Add Tip!” button on the right of results OR ”New Tip” link in main navigation and verify that form for posting new tip loads correctly and includes fields for “category”, “name, “description” and publishing date.
-    3. Try to choose tip category, enter tip name, tip description, select date of publishing, click “ADD TIP” below form and verify that user is redirected to unfiltered results page and that the new tip is included in results.
-    4. OR try to click on “login” in main navigation, click on the “Read More” button on an individual tip card (either on filtered or non-filtered results page), click “EDIT” button and verify that tip form fields get populated correctly with data from chosen tip.
-    5. Try making changes to pre-populated fields and click “SAVE TIP” and verify that user is redirected to unfiltered results page and that the edited tip is included in results.
-    6. OR try to click on “login” in main navigation, click on the “Read More” button on an individual tip card (either on filtered or non-filtered results page), click “DEL” button and verify that browser throws pop-up asking “Are you sure?”.
-    7. Try clicking “OK” and verify that user is redirected to unfiltered results page and that the deleted tip was removed from results.
-    8. OR try clicking on “Manage Categories” link in main navigation and verify that all current categories are listed incl. an “EDIT” and “DEL” button and “Add New Category” button below results.
-    9. Try clicking EDIT” button and verify that category form field gets populated correctly with data from chosen category.
-    10. Try making changes to pre-populated field and click “SAVE CATEGORY” and verify that user is redirected to unfiltered results page and that the edited tip is included in results.
-    11. OR Try clicking “DEL” button and verify that browser throws pop-up asking “Are you sure?”.
-    12. Try clicking “OK” and verify that user is redirected to categories page and that the deleted category was removed from results.
+3.	Posting, editing and deleting bugs and feature requests
+    1. Go to Online Marketing - Issue Tracker homepage
+    2. Try to “login” in via top navigation, click “+Add Bug / Feature Request!” button on the right of results (or "+Add Bug" / "+Add Feature Request" on filtered pages) OR ”New Issue” link in main navigation and verify that form for posting new issue loads correctly and includes fields for “title”, “content", “image”, publishing date, "type" and "category".
+    3. Try to populate fieds, click “SAVE” below form and verify that user is redirected to unfiltered results page and that the new bug or feature request is included in results.
+    4. OR try to “login” via main navigation, click on the “Read More” button on an individual bug or feature request card (either on filtered or non-filtered results page), click “Edit Post” button and verify that  form fields get populated correctly with data from chosen tip.
+    5. Try making changes to pre-populated fields and click “SAVE” and verify that user is redirected to unfiltered results page and that the edited tip is included in results.
+    6. OR try to “login” via main navigation, click on the “Read More” button on an individual bug or feature request card (either on filtered or non-filtered results page), click “Delete Post” button and verify that browser throws pop-up “Are you sure?”.
+    7. Try clicking “OK” and verify that user is redirected to unfiltered results page and that the deleted bug or feature request was removed from results.
 
 Manual testing revealed that adding, editing and deleting bugs and feature requests was integrated and visualised seamlessly. The functionality is accessible on all devices and all major browsers and looks virtually the same on different Browsers.
 
-Bug noticed in that cart doesn't update sometime when multiple feature requests are upvoted.
+4.  Discussing bugs and feature requests
+    1. Go to detail page of individual bug or feature request by clicking read more on summary card in overview
+    2. Try to populate comment form on bottom of page, click post and verify that comment including appears underneath commented on bug or feature request when navigating back to detail page from comment thank you page.
+
+Manual testing revealed that the “overview” and “summary" were integrated and visualised seamlessly. The pages are accessible on all devices and all major browsers and look virtually the same on different browsers.
+
+Bug noticed in that cart doesn't update sometime when multiple feature requests are upvoted. To be fixed.
+
+Potential bug noticed after deletion of bug or feature request, producing "No Post matches the given query" for all pages.
 
 ## Deployment
 This site is hosted using Heroku: Cloud Application Platform.
@@ -120,8 +124,6 @@ The live site updates automatically each time there is a new push to its [GitHub
 
 ## Credits
 ### Filtering Categories
-Advice for filtering of tips categories ering of data charts from various pages of [stackoverflow.com](https://stackoverflow.com/)
+Advice for restricting votes per user to 1 taken from [stackoverflow.com](https://stackoverflow.com/questions/38332868/restrict-each-user-to-only-vote-once-polls-django-python?noredirect=1&lq=1)
 
-https://tutorial-extensions.djangogirls.org/en/homework_create_more_models/
-https://stackoverflow.com/questions/38332868/restrict-each-user-to-only-vote-once-polls-django-python?noredirect=1&lq=1
-https://stackoverflow.com/questions/1984047/django-filter-older-than-days
+Advice for querying database for entries older than certain date taken from [stackoverflow.com](https://stackoverflow.com/questions/1984047/django-filter-older-than-days)
