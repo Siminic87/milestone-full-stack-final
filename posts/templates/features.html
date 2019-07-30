@@ -1,48 +1,58 @@
-{% extends 'base.html' %} 
-{% load comments %} 
-{% block content %}
+{% extends 'base.html' %} {% load comments %} {% block content %}
 
-<!-- Filtering Buttons -->
-<p>
-    <a href="{% url 'get_all' %}" class="btn btn-secondary">All</a>
-    <a href="{% url 'get_features' %}" class="btn btn-secondary active">Feature Requests</a>
-    <a href="{% url 'get_bugs' %}" class="btn btn-secondary">Bugs</a>
-</p>
-<!-- /.Filtering Buttons -->
-
-<hr> 
-
-<!-- Features -->
-{% for post in posts %}
-<div class="card border-primary mb-3" style="max-width: 33rem;">
-    <div class="card-header">{{ post.type }} ({{ post.status }})</div>
-    <div class="card-body">
-        <h4 class="card-title">{{ post.title }}</h4>
-        <p class="card-text">{{ post.content|truncatewords:30 }}</p>
+<div class="row">
+    <div class="col-lg-6 col-sm-12">
+        <!-- Filtering Buttons -->
         <p>
-            <a href="{% url 'post_detail' post.id %}" class="btn btn-secondary">Read more</a> Up: {{ post.upvotes}}
-            {% if user.is_authenticated %}
-            <form method="post" action={% url 'add_to_cart' post.id %}>
-                {% csrf_token %}
-                <div class="input-group">
-                    <input name="quantity" type="number" min="1" max="10" class="form-control" placeholder="Quantity" required pattern="/S+">
-                    <span class="input-group-btn">
+            <a href="{% url 'get_all' %}" class="btn btn-secondary">All</a>
+            <a href="{% url 'get_features' %}" class="btn btn-secondary active">Feature Requests</a>
+            <a href="{% url 'get_bugs' %}" class="btn btn-secondary">Bugs</a>
+        </p>
+        <!-- /.Filtering Buttons -->
+
+        <hr>
+
+        <!-- Features -->
+        {% for post in posts %}
+        <div class="card border-primary mb-3" style="max-width: 33rem;">
+            <div class="card-header">{{ post.type }} ({{ post.status }})</div>
+            <div class="card-body">
+                <h4 class="card-title">{{ post.title }}</h4>
+                <p class="card-text">{{ post.content|truncatewords:30 }}</p>
+                <p>
+                    <a href="{% url 'post_detail' post.id %}" class="btn btn-secondary">Read more</a> Up: {{ post.upvotes}} {% if user.is_authenticated %}
+                    <form method="post" action={% url 'add_to_cart' post.id %}>
+                        {% csrf_token %}
+                        <div class="input-group">
+                            <input name="quantity" type="number" min="1" max="10" class="form-control" placeholder="Quantity" required pattern="/S+">
+                            <span class="input-group-btn">
                         <button class="btn btn-secondary" type="submit">+</button>
                     </span>
-                </div>
-            </form>
-            {% endif %}
-        </p>
+                        </div>
+                    </form>
+                    {% endif %}
+                </p>
+            </div>
+        </div>
+        {% endfor %}
+        <!-- /.Features -->
+        <hr>
     </div>
+
+    {% if user.is_authenticated %}
+    <div class="col-lg-4 col-sm-12">
+        <form>
+            <button class="btn btn-secondary btn-fix" formaction="{% url 'new_post' %}" type="submit" name="action"><b>+Add Feature Request!</b></button>
+        </form>
+    </div>
+    {% endif %}
 </div>
-{% endfor %}
-<!-- /.Features -->
 
-<hr>
-
-<!-- Pagination -->
-<div class="pagination">
-    <span class="step-links">
+<div class="row">
+    <div class="col-lg-12 col-sm-12">
+        <!-- Pagination -->
+        <div class="pagination">
+            <span class="step-links">
         {% if contacts.has_previous %}
             <a href="?page=1">&laquo; first</a>
             <a href="?page={{ contacts.previous_page_number }}">previous</a>
@@ -51,10 +61,12 @@
         <span class="current">
             Page {{ posts.number }} of {{ posts.paginator.num_pages }}.
         </span> {% if contacts.has_next %}
-    <a href="?page={{ contacts.next_page_number }}">next</a>
-    <a href="?page={{ contacts.paginator.num_pages }}">last &raquo;</a> {% endif %}
-    </span>
+            <a href="?page={{ contacts.next_page_number }}">next</a>
+            <a href="?page={{ contacts.paginator.num_pages }}">last &raquo;</a> {% endif %}
+            </span>
+        </div>
+        <!-- /.Pagination -->
+    </div>
 </div>
-<!-- /.Pagination -->
 
 {% endblock %}

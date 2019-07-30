@@ -17,20 +17,14 @@ The Online Marketing Issue Tracker is the best way to influence the course of de
 - As a user type, I want to get a quick overview of bugs and feature requests that have already been posted by users of MarketingMan.ie. 
 - As a user type, I want to be able to assess and vote on the urgency with which bugs and feature requests are developed.
 - As a user type I want to be able to post, edit and delete bugs and feature requests that I would like to have tended to by the developers.
+- As a user type I want to be able to discuss bugs and feature requests with other users.
 
 ### Mockups:
 #### Desktop
-![SEO User-Exchange Mockup - Desktop](/static/img/SEO-User-Exchange-Desktop.jpg)
-
-
-
+![SEO User-Exchange Mockup - Desktop](/media/img/OM-Issue-Tracker-Desktop.jpg)
 
 #### Tablet / Mobile
-![SEO User-Exchange Mockup - Tablet/Mobile](/static/img/SEO-User-Exchange-Tablet-Mobile.jpg)
-
-
-
-
+![SEO User-Exchange Mockup - Tablet/Mobile](/media/img/OM-Issue-Tracker-Tablet-Mobile.jpg)
 
 ## Features
 The Online Marketing - Issue Tracker has various features that intend to allow users to get a quick overview of various bugs and feature requests that have been requested by other users. Users can then also post on vote on bugs and feature requests that they poersonnally would like to see tended to by the developers. 
@@ -50,10 +44,7 @@ All features fully responsive on mobile devices (incl. tablets and smartphones).
 
 ### Features Left to Implement
 - Blog pages with developer updates.
-- 
-
-
-
+- Reward pages for most active purchasers of upvotes
 
 ## Technologies Used
 - HTML
