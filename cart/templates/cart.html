@@ -11,7 +11,7 @@
         <h4 class="card-title">{{ item.post.title }}</h4>
         <p class="card-text">{{ item.post.content|truncatewords:30 }}</p>
         <hr>
-        <p>Total: </span>{{item.quantity}} * 10€ = {{ total }}€</p>
+        <p>Sub-Total: </span>{{item.quantity}} * 10€</p>
         <hr>
         <p>
             <form class="form-inline" method="post" action={% url 'adjust_cart' item.id %}>
@@ -20,7 +20,7 @@
                     <label for="exampleInputAmount" class="sr-only">New Qty</label>
                     <div class="input-group">
                         <div class="input-group-addon">Qty</div>
-                        <input name="quantity" type="number" min="0" max="999" class="form-control" value="Qty">
+                        <input name="quantity" type="number" min="0" max="999" class="form-control" value="Qty" required pattern="/S+">
                     </div>
                 </div>
                 <button type="submit" class="btn btn-primary" type="submit">Amend</span></button>
@@ -29,6 +29,12 @@
     </div>
 </div>
 {% endfor %}
+
+<hr>
+
+<p><b>Total: {{ total }}€</b></p>
+
+<hr>
 
 <a href="{% url 'checkout' %}" class="btn btn-success" role="button"><span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>Checkout</a> {% endblock %}
 <!-- /.Cart -->
