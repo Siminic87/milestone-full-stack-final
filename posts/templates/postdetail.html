@@ -9,7 +9,7 @@
         <div class="card mb-3">
             <h3 class="card-header">{{ post.title }}</h3>
             <div class="card-body">
-                <h5 class="card-title"><i>{{ post.published_date }}</i></h5>
+                <h5 class="card-title"><b>{{ post.type }}</b> - posted on <i>{{ post.published_date }}</i></h5>
             </div>
             <img style="height: 200px; width: 100%; display: block;" src="/media/{{ post.image }}" alt="Card image">
             <div class="card-body">
@@ -24,7 +24,21 @@
             {% if user.is_authenticated %}
             <div class="card-body">
                 <a href="{% url 'edit_post' post.id %}" class="btn btn-secondary">Edit Post</a>
-                <a href="{% url 'delete_post' post.id %}" class="btn btn-secondary" onclick="return confirm('Are you sure?')">Delete Post</a>
+                <a href="{% url 'delete_post' post.id %}" class="btn btn-secondary" onclick="return confirm('Are you sure?')">Delete Post</a> 
+                {% if post.type == "Bug" %}
+                <a href="/posts/upvote/{{ post.id }}/" class="btn btn-secondary">+</a> 
+                {% else %}
+                <br><br>
+                <form method="post" action={% url 'add_to_cart' post.id %}>
+                    {% csrf_token %}
+                    <div class="input-group">
+                        <input name="quantity" type="number" min="1" max="10" class="form-control" placeholder="Quantity" required pattern="/S+">
+                        <span class="input-group-btn">
+                            <button class="btn btn-secondary" type="submit">+</button>
+                        </span>
+                    </div>
+                </form>
+                {% endif %}
             </div>
             {% endif %}
             <div class="card-footer text-muted">
@@ -36,8 +50,7 @@
         <hr>
 
         <!-- Comment Form -->
-        {% get_comment_list for post as comment_list %} 
-        {% for comment in comment_list %}
+        {% get_comment_list for post as comment_list %} {% for comment in comment_list %}
         <p>Comment by: <i>{{ comment.user_name }}</i> on <i>{{ comment.submit_date }}</i></p>
         <p>"{{ comment.comment }}"</p>
         <hr> {% endfor %}
