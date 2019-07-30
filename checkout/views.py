@@ -57,7 +57,7 @@ def checkout(request):
                     post.upvotes += quantity
                     post.save()
                     
-                    return redirect(reverse('get_all'))
+                    return redirect(reverse('get_features'))
                 else:
                     messages.error(request, "Unable to make payment")
         else:

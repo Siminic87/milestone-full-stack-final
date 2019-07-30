@@ -11,7 +11,7 @@
         <h4 class="card-title">{{ item.post.title }}</h4>
         <p class="card-text">{{ item.post.content|truncatewords:30 }}</p>
         <hr>
-        <p>Sub-Total: </span>{{item.quantity}} * 10€</p>
+        <p><u>Sub-Total:</u> </span>{{item.quantity}} * 10€</p>
         <hr>
         <p>
             <form class="form-inline" method="post" action={% url 'adjust_cart' item.id %}>
