@@ -71,17 +71,20 @@ All features fully responsive on mobile devices (incl. tablets and smartphones).
 ## Testing
 1.  Quick overview of all posted bugs and feature requests
     1. Go to Online Marketing - Issue Tracker homepage
-    2. Verify that bugs and feature requests are ordered in descending order according to number of upvotes and that only 10 results are shown per page and that the remaining results can be accessed via the pagination links.
+    2. Verify that bug and feature request cards are ordered in descending order according to number of upvotes and that only 10 results are shown per page and that the remaining results can be accessed via the pagination links.
     3. Try to click on category links above results and verify that depending on selected category, only results for this category are displayed.
-    4. Try to click on “summary” link in top navigation and verify that the 2 graphs reflect current results and change dynamically when database is edited.
+    4. Try to click on “summary” link in top navigation and verify that the 2 graphs reflect current results of "Done" bugs and feature requests and change dynamically when database is edited.
 
 Manual testing revealed that the “overview” and “summary" were integrated and visualised seamlessly. The pages are accessible on all devices and all major browsers and look virtually the same on different browsers.
 
 2.	Assessing and voting on urgency of bugs and feature requests
-    1. Go to Online Marketing - Issue Tracke homepage
-    2. Try scrolling down results and verify that individual tip cards show number of received upvotes (See “Up:”).
-    3. OR try to click on “Login” in main navigation and verify that individual tip cards now have an up- and downvote button.
-    4. Try to click on either the up- or downvote button and verify that total number of upvotes of the chosen tip goes up or down accordingly.
+    1. Go to Online Marketing - Issue Tracker homepage
+    2. Try scrolling down results and verify that individual bug and feature request cards show number of received upvotes (See “Up:”).
+    3. OR try to click on “Login” in main navigation and verify that individual bug and feature request cards now have an upvote button.
+    4. Try to click on upvote button of BUG and verify that total number of upvotes of the chosen bug goes up by 1. Verify that when same bug gets upvoted a second time by same user, message "you already upvoted this!" appears above results.
+    5. OR try to click on upvote button of FEATURE REQUEST and verify that chosen number of upvotes in form of the chosen feature gets transferred to cart as indicated by badge icon on top navigation and actual cart page that user is now redirected to. Verify that subtotals and total Euro amount for chosen number of upvotes is correct.
+    6. Try to click on "checkout" and verify that purchase can succesfully be made with 4242 4242 4242 4242 stripe test credit card when purchase information is entered in form fields. Verify that sub-totals and total are still correct on checkout page.
+    7. 
     5. OR try to click on “login” in main navigation, click on the “Read More” button on an individual tip card (either on filtered or non-filtered results page) and verify that the individual tip card now has an up- and downvote button.
     6. Try to click on either the up- or downvote button and verify that total number of upvotes of the chosen tip goes up or down accordingly.
 
@@ -103,7 +106,7 @@ Manual testing revealed that assessing and voting on tips was integrated and vis
 
 Manual testing revealed that adding, editing and deleting bugs and feature requests was integrated and visualised seamlessly. The functionality is accessible on all devices and all major browsers and looks virtually the same on different Browsers.
 
-Major bug noticed when category buttons would not filter results at all and only render main summary page. Bug fixed by passing category correctly to template. Abother bug has appeared on Google Chrome browsers where the datepicker calendar closes before a date can be chosen on form pages. Resolution outstanding.
+Bug noticed in that cart doesn't update sometime when multiple feature requests are upvoted.
 
 ## Deployment
 This site is hosted using Heroku: Cloud Application Platform.

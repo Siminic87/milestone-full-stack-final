@@ -25,12 +25,14 @@
                 <h4 class="card-title">{{ item.post.title }}</h4>
                 <p class="card-text">{{ item.post.content|truncatewords:30 }}</p>
                 <hr>
-                <p><b>Total:</b> </span>{{item.quantity}} * 10€ = {{ total }}€</p>
+                <p><u>Sub-Total:</u> </span>{{item.quantity}} * 10€</p>
             </div>
         </div>
     </div>
     {% endfor %}
     <!-- /.Cart Items -->
+    <hr>
+    <p><b>Total: {{ total }}€</b></p>
     <hr>
 
     <!-- Checkout Form -->
