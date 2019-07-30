@@ -33,12 +33,13 @@
         <p>
             <a href="{% url 'post_detail' post.id %}" class="btn btn-secondary">Read more</a>
             {% if user.is_authenticated %}
-            <a href="upvote/{{ post.id }}/" class="btn btn-secondary">+</a> Up: {{ post.upvotes }}
+            <a href="upvote/{{ post.id }}/" class="btn btn-secondary">+</a>
             {% endif %}
+            Up: {{ post.upvotes }}
         </p>
         {% else %}
         <p>
-            <a href="{% url 'post_detail' post.id %}" class="btn btn-secondary">Read more</a>
+            <a href="{% url 'post_detail' post.id %}" class="btn btn-secondary">Read more</a> Up: {{ post.upvotes}}
         </p>
         {% if user.is_authenticated %}
         <form method="post" action={% url 'add_to_cart' post.id %}>
@@ -46,11 +47,12 @@
             <div class="input-group">
                 <input name="quantity" type="number" min="1" max="10" class="form-control" placeholder="Quantity" required pattern="/S+">
                 <span class="input-group-btn">
-                    <button class="btn btn-secondary" type="submit">+</button> Up: {{ post.upvotes }}
+                    <button class="btn btn-secondary" type="submit">+</button>
                 </span>
             </div>
         </form>
-        {% endif %} {% endif %}
+        {% endif %} 
+        {% endif %}
     </div>
 </div>
 {% endfor %}
