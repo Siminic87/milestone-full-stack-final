@@ -1,34 +1,38 @@
 {% extends 'base.html' %} 
 {% load static from staticfiles %} 
 {% load bootstrap_tags %} 
-{% block content %} 
+{% block content %}
 
-<!-- Cart -->
-{% for item in cart_items %}
-<div class="card border-primary mb-3" style="max-width: 33rem;">
-    <div class="card-header">{{ item.post.type }} ({{ item.post.status }})</div>
-    <div class="card-body">
-        <h4 class="card-title">{{ item.post.title }}</h4>
-        <p class="card-text">{{ item.post.content|truncatewords:30 }}</p>
-        <hr>
-        <p><u>Sub-Total:</u> </span>{{item.quantity}} * 10€</p>
-        <hr>
-        <p>
-            <form class="form-inline" method="post" action={% url 'adjust_cart' item.id %}>
-                {% csrf_token %}
-                <div class="form-group">
-                    <label for="exampleInputAmount" class="sr-only">New Qty</label>
-                    <div class="input-group">
-                        <div class="input-group-addon">Qty</div>
-                        <input name="quantity" type="number" min="0" max="999" class="form-control" value="Qty" required pattern="/S+">
-                    </div>
-                </div>
-                <button type="submit" class="btn btn-primary" type="submit">Amend</span></button>
-            </form>
-        </p>
+<div class="row">
+    <div class="col-lg-12 col-sm-12">
+        <!-- Cart -->
+        {% for item in cart_items %}
+        <div class="card border-primary mb-3" style="max-width: 33rem;">
+            <div class="card-header">{{ item.post.type }} ({{ item.post.status }})</div>
+            <div class="card-body">
+                <h4 class="card-title">{{ item.post.title }}</h4>
+                <p class="card-text">{{ item.post.content|truncatewords:30 }}</p>
+                <hr>
+                <p><u>Sub-Total:</u> </span>{{item.quantity}} * 10€</p>
+                <hr>
+                <p>
+                    <form class="form-inline" method="post" action={% url 'adjust_cart' item.id %}>
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="exampleInputAmount" class="sr-only">New Qty</label>
+                            <div class="input-group">
+                                <div class="input-group-addon">Qty</div>
+                                <input name="quantity" type="number" min="0" max="999" class="form-control" value="Qty" required pattern="/S+">
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary" type="submit">Amend</span></button>
+                    </form>
+                </p>
+            </div>
+        </div>
+        {% endfor %}
     </div>
 </div>
-{% endfor %}
 
 <hr>
 
