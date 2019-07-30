@@ -91,3 +91,4 @@ virtualenv-clone==0.5.3
 virtualenvwrapper==4.8.4
 wrapt==1.11.2
 zope.interface==4.3.2
+gunicorn==19.9.0
