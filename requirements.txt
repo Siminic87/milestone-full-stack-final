@@ -20,3 +20,4 @@ requests==2.22.0
 six==1.12.0
 stripe==2.32.1
 urllib3==1.25.3
+boto3==1.9.199
