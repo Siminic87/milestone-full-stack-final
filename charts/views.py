@@ -11,7 +11,7 @@ from posts.models import Post, Voter
 class ChartData(APIView):
     """
     View to query database for average of bugs and feature requests that have 
-    been "done" per day, week and month. 
+    been "done" per day, week and month in last month. 
     """
     authentication_classes = []
     permission_classes = []
