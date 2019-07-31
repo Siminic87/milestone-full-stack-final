@@ -23,7 +23,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [os.getenv('HOST_C9'), 'https://milestone-full-stack-final.herokuapp.com/']
+ALLOWED_HOSTS = [os.getenv('HOST_C9'), 'https://milestone-full-stack-final.herokuapp.com']
 
 # Application definition
 
