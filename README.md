@@ -69,7 +69,7 @@ All features fully responsive on mobile devices (incl. tablets and smartphones).
 ## Testing
 1.  Quick overview of all posted bugs and feature requests
     1. Go to Online Marketing - Issue Tracker homepage
-    2. Verify that bug and feature request cards are ordered in descending order according to number of upvotes and that only 10 results are shown per page and that the remaining results can be accessed via the pagination links.
+    2. Verify that bug and feature request cards are ordered in descending order according to number of upvotes and that only 5 results are shown per page and that the remaining results can be accessed via the pagination links.
     3. Try to click on category links above results and verify that depending on selected category, only results for this category are displayed.
     4. Try to click on “summary” link in top navigation and verify that the 2 graphs reflect current results of "Done" bugs and feature requests and change dynamically when database is edited.
 

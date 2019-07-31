@@ -17,10 +17,10 @@ def get_all(request):
     """
     post_list = Post.objects.filter(published_date__lte=timezone.now()
         ).order_by('-upvotes')
-    paginator = Paginator(post_list, 10) # Show 10 posts per page
+    paginator = Paginator(post_list, 5) # Show 5 posts per page
     
-    page = request.GET.get('page')
-    posts = paginator.page(1)
+    page = request.GET.get('page', 1)
+    posts = paginator.page(page)
     return render(request, "all.html", {'posts': posts})
     
 def get_features(request):
@@ -32,10 +32,10 @@ def get_features(request):
     """
     post_list = Post.objects.filter(type="Feature Request", published_date__lte=timezone.now()
         ).order_by('-upvotes')
-    paginator = Paginator(post_list, 10) # Show 10 posts per page
+    paginator = Paginator(post_list, 5) # Show 5 posts per page
     
-    page = request.GET.get('page')
-    posts = paginator.page(1)
+    page = request.GET.get('page', 1)
+    posts = paginator.page(page)
     return render(request, "features.html", {'posts': posts})
     
 def get_bugs(request):
@@ -46,10 +46,10 @@ def get_bugs(request):
     """
     post_list = Post.objects.filter(type="Bug", published_date__lte=timezone.now()
         ).order_by('-upvotes')
-    paginator = Paginator(post_list, 10) # Show 10 posts per page
+    paginator = Paginator(post_list, 5) # Show 5 posts per page
     
-    page = request.GET.get('page')
-    posts = paginator.page(1)
+    page = request.GET.get('page', 1)
+    posts = paginator.page(page)
     return render(request, "bugs.html", {'posts': posts})
 
 def post_detail(request, pk):
